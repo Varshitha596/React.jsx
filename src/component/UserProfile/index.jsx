@@ -1,16 +1,36 @@
+import { Component } from 'react'
 import './index.css'
-const UserDetails =(props) => {
-    const {givenData}=props
-    const {image,name,work}=givenData
-   return (
-        <li className="user-card-container">
-            <img src={image} alt={name}className='photo'/>
-            <div className='user-details-container'>
-            <h1 className='user-name'>{name}</h1>
-            <h5 className='user-name'>{work}</h5>
-            </div>
-        </li>
-    )
-}
 
-export default UserDetails
+
+class Counter extends Component {
+
+state={count : 0}
+
+    onIncrement=() =>{
+        this.setState(prevState => {
+            //console.log("preview id ${prevState.count}");
+            return {count:prevState.count +1}
+        })
+    }
+   onDecrement=() =>{
+    this.setState(prevState => {
+        return {count: prevState.count -1}
+    })
+   }
+    render() {
+        const {count} = this.state
+        return (
+            <div className='container'>
+                <h1 className='heading'>Counter</h1>
+                <p className='count'>{count}</p>
+                <div>
+                    <button className='button' onClick={this.onIncrement}>
+                        Increase
+                    </button>
+                    <button className='button' onClick={this.onDecrement}>Decrease</button>
+                </div>
+            </div>
+        )
+    }
+}
+export default Counter 

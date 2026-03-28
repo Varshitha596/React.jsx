@@ -1,1 +1,5 @@
-<p1>hi , hello and im varsha form na</p1>
+import Counter from './component/UserProfile'
+const App=() => {
+    return <Counter/>
+}
+export default App
