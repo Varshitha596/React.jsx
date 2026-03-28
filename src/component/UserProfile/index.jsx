@@ -1,36 +1,28 @@
-import { Component } from 'react'
 import './index.css'
 
+//HOOKS
+import {useState} from 'react'
 
-class Counter extends Component {
+const Counter =() =>{
+    const[count ,setCount]=useState(0)
 
-state={count : 0}
+    
+    const onIncrement= () =>{
+   setCount (prevCount => prevCount +1)
 
-    onIncrement=() =>{
-        this.setState(prevState => {
-            //console.log("preview id ${prevState.count}");
-            return {count:prevState.count +1}
-        })
     }
-   onDecrement=() =>{
-    this.setState(prevState => {
-        return {count: prevState.count -1}
-    })
-   }
-    render() {
-        const {count} = this.state
-        return (
-            <div className='container'>
-                <h1 className='heading'>Counter</h1>
-                <p className='count'>{count}</p>
-                <div>
-                    <button className='button' onClick={this.onIncrement}>
-                        Increase
-                    </button>
-                    <button className='button' onClick={this.onDecrement}>Decrease</button>
-                </div>
+    const onDecrement=() =>{
+setCount (prevCount => prevCount -1)
+    }
+    return (
+        <div className="container">
+            <h1 className="heading">Counter</h1>
+            <p className="count">{count}</p>
+            <div>
+                <button className="button" onClick={onIncrement}>Increase</button>
+                <button className="button" onClick={onDecrement}>Decrease</button>
             </div>
-        )
-    }
+        </div>
+    )
 }
-export default Counter 
+export default Counter
