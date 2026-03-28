@@ -1,0 +1,28 @@
+.user-card-container{
+    display:flex;
+    align-items:center;
+    border-radius: 12px;
+    margin-bottom:30px ;
+}
+.photo{
+    width:98px;
+    height: 98px;
+    border-radius: 44px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.user-details-container{
+   background-color: #ad8fea;
+   margin-top: 22px;
+   padding:30px;
+    border-radius:5px;
+}
+.user-name{
+    font-size: 18px;
+    color: #e2d4ff;
+    font-family: 'Roboto';
+    font-weight: bold;
+  
+    margin: 5px;
+    margin-left: 12px;
+}
