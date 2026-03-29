@@ -1,18 +1,18 @@
 import './index.css'
 
 //HOOKS
-import {useState} from 'react'
+import { useState } from 'react'
 
-const Counter =() =>{
-    const[count ,setCount]=useState(0)
+const Counter = () => {
+    const [count, setCount] = useState(0)
 
-    
-    const onIncrement= () =>{
-   setCount (prevCount => prevCount +1)
+
+    const onIncrement = () => {
+        setCount(prevCount => prevCount + 1)
 
     }
-    const onDecrement=() =>{
-setCount (prevCount => prevCount -1)
+    const onDecrement = () => {
+        setCount(prevCount => prevCount - 1)
     }
     return (
         <div className="container">
