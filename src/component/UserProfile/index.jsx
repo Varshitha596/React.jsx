@@ -1,28 +1,25 @@
-import './index.css'
+import "./index.css";
 
-//HOOKS
-import { useState } from 'react'
+const CommentItem = (props) => {
+  const { commentDetails } = props;
+  const { name, commentText } = commentDetails;
 
-const Counter = () => {
-    const [count, setCount] = useState(0)
+  const initial = name ? name[0].toUpperCase() : "";
 
-
-    const onIncrement = () => {
-        setCount(prevCount => prevCount + 1)
-
-    }
-    const onDecrement = () => {
-        setCount(prevCount => prevCount - 1)
-    }
-    return (
-        <div className="container">
-            <h1 className="heading">Counter</h1>
-            <p className="count">{count}</p>
-            <div>
-                <button className="button" onClick={onIncrement}>Increase</button>
-                <button className="button" onClick={onDecrement}>Decrease</button>
-            </div>
+  return (
+    <div>
+      <li className="list-item">
+        <div className="intial-and-comment-container">
+          <p className="initial">{initial}</p>
+          <div className="name-and-comment-container">
+            <p className="name-text">{name}</p>
+            <p className="comment-text">{commentText}</p>
+          </div>
         </div>
-    )
-}
-export default Counter
+      </li>
+      <hr className="horizontal-line" />
+    </div>
+  );
+};
+
+export default CommentItem;
