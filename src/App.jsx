@@ -23,6 +23,11 @@ const commentsList = [
     name: "Devon Lane",
     commentText: "The soundtrack perfectly complements the animation!",
   },
+  {
+    uniqueNo: 5,
+    name: "Devon Lane",
+    commentText: "The soundtrack perfectly complements the animation!",
+  },
 ];
 
 const App = () => {
