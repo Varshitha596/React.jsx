@@ -1,5 +1,5 @@
 import CommentItem from "./component/UserProfile";
-import {useState} from 'react'
+import { useState } from 'react'
 import "./App.css";
 
 const commentsList = [
@@ -31,9 +31,9 @@ const commentsList = [
 ];
 
 const App = () => {
-  const[searchInput,setSearchInput]=useState('')
-  const onChangeSearchInput= (event)=>{
-setSearchInput(event.target.value)
+  const [searchInput, setSearchInput] = useState('')
+  const onChangeSearchInput = (event) => {
+    setSearchInput(event.target.value)
   }
   console.log(searchInput)
   return (
@@ -62,7 +62,7 @@ setSearchInput(event.target.value)
         <div className="comments-header">
           <p className="comments-title">Comments</p>
           <input type="search" className="search-input" onChange={onChangeSearchInput}
-          value={searchInput}/>
+            value={searchInput} />
         </div>
         <ul className="comments-list">
           {commentsList.map((eachComment) => (
