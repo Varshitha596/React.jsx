@@ -1,5 +1,7 @@
 import "./index.css";
 
+
+
 const CommentItem = (props) => {
   const { commentDetails } = props;
   const { name, commentText } = commentDetails;
