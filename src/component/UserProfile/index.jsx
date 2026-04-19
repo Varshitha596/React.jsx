@@ -1,20 +1,12 @@
-import {useState} from 'react'
-import Welcome from './components/Welcome'
-import './App.css'
-const App=()=>{
-const [isloggedin , isloggedOut]=useState(true)
-const renderAuth=()=>{
-  if(isloggedin===true){
-    return <button>Login</button>
-  }
- 
-    return <button>Logout</button>
-  }
+import "./index.css";
 
-return (
-  <div className="container">
-    <h1>Hello</h1>
-    {renderAuth()}
-  </div>
-)
-}
+const Welcome = (props) => {
+  const { name, greeting } = props;
+  return (
+    <h1 className="message">
+      {greeting}, {name}
+    </h1>
+  );
+};
+
+export default Welcome;
