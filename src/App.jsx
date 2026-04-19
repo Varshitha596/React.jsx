@@ -1,25 +1,27 @@
-import {useState} from 'react'
-import Welcome from './component/UserProfile'
+import { useState } from "react";
+import Welcome  from "./component/UserProfile";
 
-const App=()=>{
-const [isloggedin ]=useState(false)
+const App =() =>{
+  const [login, funcloginIn]=useState(true);
 
-
-const renderAuth=()=>{
-  if(isloggedin===true){
-    return <button>Login</button>
+  const renderfunc=()=>{
+    if(login===true){
+      return (
+        <button onClick={()=>funcloginIn(false)}>logg out</button>
+      );
+    }
+   return(
+    <button onClick={()=>funcloginIn(true)}>loggin</button>);
   }
- 
-    return <button>Logout</button>
-  }
-
-return (
-  <div className="container">
-    <h1>Hello</h1>
-    {renderAuth()}
-  </div>
-)
-}
-export default App;
 
 
+return(
+  <div>
+   <Welcome roll="Hello" name="User" />
+      {renderfunc()}
+      </div>
+);
+};
+
+
+export default App

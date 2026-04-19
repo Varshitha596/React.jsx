@@ -1,12 +1,8 @@
-import "./index.css";
+import "./index.css"
 
-const Welcome = (props) => {
-  const { name, greeting } = props;
-  return (
-    <h1 className="message">
-      {greeting}, {name}
-    </h1>
-  );
+const Welcome = (props)=>{
+  const {name ,roll}=props;
+   return (<h1>{name}, {roll}</h1>);
 };
 
-export default Welcome;
+export default Welcome
