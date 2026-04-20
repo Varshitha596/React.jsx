@@ -6,6 +6,6 @@ import Appy from './appy.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Appy />
+    <App />
   </StrictMode>,
 )
