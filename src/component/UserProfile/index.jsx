@@ -1,8 +1,11 @@
-import "./index.css"
 
-const Welcome = (props)=>{
-  const {name ,roll}=props;
-   return (<h1>{name}, {roll}</h1>);
+const Page = (props)=>{
+  const {help}=props;
+  const {name}=help;
+  return (
+    <div>
+      <h1>{name}</h1>
+    </div>
+  )
 };
-
-export default Welcome
+export default Page;
