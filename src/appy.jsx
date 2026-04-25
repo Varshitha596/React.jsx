@@ -43,7 +43,7 @@ const commentsList = [
 
 const App = () => {
   const [searchInput, setsearchInput] = useState('')
-  const [commentsList,setcommentsList]=useState(commentsList)
+  const [commentsList,setcommentsList]=useState(initialcommentsList)
 
   const onChangeSearchInput =(event)=>{
     setsearchInput(event.target.value)
