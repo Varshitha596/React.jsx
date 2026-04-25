@@ -1,6 +1,7 @@
 import CommentItem from './components/CommentItem'
 
 import './App.css'
+import { useState } from 'react'
 
 const commentsList = [
   {
@@ -23,9 +24,29 @@ const commentsList = [
     name: 'Devon Lane',
     commentText: 'The soundtrack perfectly complements the animation!',
   },
+  {
+    uniqueNo: 5,
+    name: 'Daron',
+    commentText: 'The soundtrack perfectly !',
+  },
+  {
+    uniqueNo: 6,
+    name: 'Ravi',
+    commentText: 'The soundtrack perfectly !',
+  },
+  {
+    uniqueNo: 7,
+    name: 'Fish',
+    commentText: 'The soundtrack perfectly !',
+  },
 ]
 
 const App = () => {
+  const [searchInput, setsearchInput] = useState('')
+  const onChangeSearchInput =(event)=>{
+    setsearchInput(event.target.value)
+  }
+ const searchResults = commentsList.filter(eachComment =>eachComment.name.includes(searchInput),)
   return (
     <div className="main-container">
       <div className="header-container">
@@ -51,9 +72,10 @@ const App = () => {
       <div className="comments-container">
         <div className="comments-header">
           <p className="comments-title">Comments</p>
+              <input type="search" className='search-input' onChange={onChangeSearchInput} value={searchInput} /> 
         </div>
         <ul className="comments-list">
-          {commentsList.map(eachComment => (
+          {searchResults.map((eachComment) => (
             <CommentItem
               key={eachComment.uniqueNo}
               commentDetails={eachComment}
