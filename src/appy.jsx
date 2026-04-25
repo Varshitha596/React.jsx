@@ -43,10 +43,16 @@ const commentsList = [
 
 const App = () => {
   const [searchInput, setsearchInput] = useState('')
+  const [commentsList,setcommentsList]=useState(commentsList)
+
   const onChangeSearchInput =(event)=>{
     setsearchInput(event.target.value)
   }
  const searchResults = commentsList.filter(eachComment =>eachComment.name.includes(searchInput),)
+
+ const deleteComment =() =>{
+  console.log('deleteComment() triggered')
+ }
   return (
     <div className="main-container">
       <div className="header-container">
@@ -79,6 +85,7 @@ const App = () => {
             <CommentItem
               key={eachComment.uniqueNo}
               commentDetails={eachComment}
+              deleteComment={deleteComment}
             />
           ))}
         </ul>
