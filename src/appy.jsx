@@ -1,9 +1,9 @@
+import {useState} from 'react'
 import CommentItem from './components/CommentItem'
 
 import './App.css'
-import { useState } from 'react'
 
-const commentsList = [
+const initialCommentsList = [
   {
     uniqueNo: 1,
     name: 'Rahul',
@@ -24,35 +24,45 @@ const commentsList = [
     name: 'Devon Lane',
     commentText: 'The soundtrack perfectly complements the animation!',
   },
-  {
-    uniqueNo: 5,
-    name: 'Daron',
-    commentText: 'The soundtrack perfectly !',
-  },
-  {
-    uniqueNo: 6,
-    name: 'Ravi',
-    commentText: 'The soundtrack perfectly !',
-  },
-  {
-    uniqueNo: 7,
-    name: 'Fish',
-    commentText: 'The soundtrack perfectly !',
-  },
 ]
 
 const App = () => {
-  const [searchInput, setsearchInput] = useState('')
-  const [commentsList,setcommentsList]=useState(initialcommentsList)
+  const [searchInput, setSearchInput] = useState('')
+  const [commentText, setCommentText] = useState('')
+  const [commentsList, setCommentsList] = useState(initialCommentsList)
+  const [name,setName]=useState('')
+  const onChangeSearchInput = event => setSearchInput(event.target.value)
 
-  const onChangeSearchInput =(event)=>{
-    setsearchInput(event.target.value)
+  const deleteComment = uniqueNo => {
+    const filteredComments = commentsList.filter(
+      each => each.uniqueNo !== uniqueNo,
+    )
+    setCommentsList(filteredComments)
   }
- const searchResults = commentsList.filter(eachComment =>eachComment.name.includes(searchInput),)
 
- const deleteComment =() =>{
-  console.log('deleteComment() triggered')
- }
+  const searchResults = commentsList.filter(eachComment =>
+    eachComment.name.includes(searchInput),
+  )
+  const onChangeName=event =>{
+    setName(event.target.value)
+  }
+  const onChangeCommentText=event =>{
+    setCommentText(event.target.value)
+  }
+  const onAddComment = event =>{
+    event.preventDefault()
+    const newComment = {
+      uniqueNo : commentsList.length+1,
+      name,
+      commentText,
+    }
+    setCommentsList(prevCommentsList => [...prevCommentsList, newComment])
+  
+   setName("")
+   setCommentText("")
+  }
+  console.log(commentsList)
+  
   return (
     <div className="main-container">
       <div className="header-container">
@@ -78,10 +88,29 @@ const App = () => {
       <div className="comments-container">
         <div className="comments-header">
           <p className="comments-title">Comments</p>
-              <input type="search" className='search-input' onChange={onChangeSearchInput} value={searchInput} /> 
+          <input
+            type="search"
+            className="search-input"
+            placeholder="Search comments..."
+            value={searchInput}
+            onChange={onChangeSearchInput}
+          />
         </div>
+        <form className="form" onSubmit={onAddComment}>
+          <input type="text" className="name-input" placeholder="Your name" value={name} onChange={onChangeName}/>
+          <textarea
+            className="comment-text-input"
+            placeholder="Your comment"
+            rows="6"
+            onChange={onChangeCommentText}
+            value ={commentText}
+          />
+          <button type="submit" className="comment-button">
+            Comment
+          </button>
+        </form>
         <ul className="comments-list">
-          {searchResults.map((eachComment) => (
+          {searchResults.map(eachComment => (
             <CommentItem
               key={eachComment.uniqueNo}
               commentDetails={eachComment}

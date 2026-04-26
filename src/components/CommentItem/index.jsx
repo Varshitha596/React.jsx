@@ -1,15 +1,15 @@
 import './index.css'
 
 const CommentItem = props => {
-  const {commentDetails,deleteComment} = props
-  const {name, commentText} = commentDetails
+  const {commentDetails, deleteComment} = props
+  const {name, commentText, uniqueNo} = commentDetails
 
   const initial = name ? name[0].toUpperCase() : ''
 
- const onDelete = () =>{
-  deleteComment()
- }
-  
+  const onDelete = () => {
+    deleteComment(uniqueNo)
+  }
+
   return (
     <div>
       <li className="list-item">
@@ -21,7 +21,11 @@ const CommentItem = props => {
           </div>
         </div>
         <button type="button" className="delete-button" onClick={onDelete}>
-          <img src="https://assets.ccbp.in/frontend/react-js/cross-img.png" alt="cross" className="delete-img"/>
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/cross-img.png"
+            alt="cross"
+            className="delete-img"
+          />
         </button>
       </li>
       <hr className="horizontal-line" />
