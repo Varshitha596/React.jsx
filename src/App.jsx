@@ -1,4 +1,3 @@
-
 import TabItem from './components/TabItem/index.jsx'
 import ProjectItem from './components/ProjectItem/index.jsx'
 import Header from './components/Header/index.jsx'
@@ -86,6 +85,8 @@ const projectsList = [
 ]
 
 const App = () => {
+  const [activeTabId,setActiveTabId] = useState(tabsList)
+  
   return (
     <div className="app-container">
       <Header />
