@@ -105,8 +105,9 @@ const App = () => {
 
       <ul className="tabs-container">
         {tabsList.map(tabDetails => (
-          <TabItem key={tabDetails.tabId} tabDetails={tabDetails} updateActiveTabId={updateActiveTabId}/>
-        ))}
+          <TabItem key={tabDetails.tabId} tabDetails={tabDetails} updateActiveTabId={updateActiveTabId}  isActive={tabDetails.tabId===activeTabId}/>
+       
+       ))}
       </ul>
 
       <ul className="project-list-container">
