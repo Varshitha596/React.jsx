@@ -1,7 +1,7 @@
 import TabItem from './components/TabItem/index.jsx'
 import ProjectItem from './components/ProjectItem/index.jsx'
 import Header from './components/Header/index.jsx'
-
+import { useState } from 'react'
 import './App.css'
 
 const tabsList = [
@@ -85,8 +85,16 @@ const projectsList = [
 ]
 
 const App = () => {
-  const [activeTabId,setActiveTabId] = useState(tabsList)
-  
+  const [activeTabId,setActiveTabId] = useState(tabsList[0].tabId)
+
+  const getFilteredProjects = () =>{
+    const filteredProjects= projectsList.filter((eachprojectDetails)=>eachprojectDetails.category === activeTabId,)
+    return filteredProjects
+  }
+  const filteredProjects = getFilteredProjects()
+  const updateActiveTabId=(tabId) =>{
+    setActiveTabId(tabId)
+  }
   return (
     <div className="app-container">
       <Header />
@@ -97,12 +105,12 @@ const App = () => {
 
       <ul className="tabs-container">
         {tabsList.map(tabDetails => (
-          <TabItem key={tabDetails.tabId} tabDetails={tabDetails} />
+          <TabItem key={tabDetails.tabId} tabDetails={tabDetails} updateActiveTabId={updateActiveTabId}/>
         ))}
       </ul>
 
       <ul className="project-list-container">
-        {projectsList.map(projectDetails => (
+        {filteredProjects.map(projectDetails => (
           <ProjectItem
             key={projectDetails.projectId} projectDetails={projectDetails}
           />
